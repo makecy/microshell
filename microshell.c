@@ -3,14 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-/*not needed in exam, but necessary if you want to use this tester:
-https://github.com/Glagan/42-exam-rank-04/blob/master/microshell/test.sh*/
-// #ifdef TEST_SH
-// # define TEST		1
-// #else
-// # define TEST		0
-// #endif
-
 void	ft_putstr_fd2(char *str, char *arg)
 {
 	while (*str)
@@ -23,8 +15,6 @@ void	ft_putstr_fd2(char *str, char *arg)
 
 void ft_execute(char *argv[], int i, int tmp_fd, char *env[])
 {
-	//overwrite ; or | or NULL with NULL to use the array as input for execve.
-	//we are here in the child so it has no impact in the parent process.
 	argv[i] = NULL;
 	dup2(tmp_fd, STDIN_FILENO);
 	close(tmp_fd);
